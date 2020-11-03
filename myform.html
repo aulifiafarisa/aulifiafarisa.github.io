@@ -1,0 +1,65 @@
+<html>
+<head>
+    <title>05211942000014 - AULIFIA RIZKI FARISA</title>
+    <style>
+        .label {
+            float: left;
+            width: 120px;
+        }
+
+        .error {
+            color: red;
+            padding-left: 10px;
+        }
+
+        .submit {
+            margin-left: 125px;
+            margin-top: 10px;
+        }
+
+        div {
+            padding: 5px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        // In this form, i modified the existing code into a case which users wants to change new password on their Social media account.
+        $(document).ready(function () { //to make a function available after the document is loaded
+            $('.error').hide(); //to hides the error message
+            $('.submit').click(function (event) { //triggers the submit event, or attaches a function to run when a submit event occurs.
+                data = $('.password').val(); //sets or returns the value of the value attribute of a password field.
+                var len = data.length; //returns the length of a string (number of characters).
+                if (len < 1) { //if the length of the password is less than 1 (empty),
+                    $('.password').next().show(); //we make the element next to the password field (which is the span element of the class error) shown on the screen.
+                }
+                else { //If the password not empty,we make the element next to the password field (which is the span element of the class error) hide so it not shown the screen.
+                    $('.password').next().hide();
+                }
+                if ($('.password').val() != $('.confpass').val()) { //check whether the data entered in the Password field and the Confirm Password field (data in elements of class .password and .confpass) are exactly the same.
+                    $('.confpass').next().show(); //if its not same, we show the error message (which is the element next to the Confirm Password field) that states Password and Confirm Password don’t match.
+                }
+                else {
+                    $('.confpass').next().hide(); //if it same or match, we hide the error message so that the error message will be not shown.
+                }
+                event.preventDefault(); // prevent the data entered by the user from sending it to the server, as we are mainly interested in confirming that the data entered in Password and Confirm Password fields match. 
+            });
+        }); 
+    </script>
+</head>
+
+<body>
+    <form> 
+        <div><span class="label">User Id / Email</span><input type="text" class="userid" name="userid" /></div>
+        <div><span class="label">New Password </span><input type="password" class="password" name="password" /><span
+                class="error"> Password cannot be blank</span></div>
+        <div><span class="label">Verify new Password </span><input type="password" class="confpass" name="confpass" /><span
+                class="error"> Password and Confirm Password don't
+                match</span></div>
+        <input class="submit" type="submit" value="Submit">
+
+    </form>
+
+</body>
+
+</html>
